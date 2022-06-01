@@ -1,0 +1,76 @@
+GET http://localhost:3000/beranda/gosend
+
+###
+GET http://localhost:3000/beranda/gosend/629676c2638c8102966dd214
+
+###
+DELETE http://localhost:3000/beranda/gosend/629769d86bd6be1369a79d09
+
+###
+POST http://localhost:3000/beranda/gosend
+Content-Type: application/json
+
+{
+    "namaPengirim" : "Andi Saputra",
+    "noTelpPengirim" : "081364739192",
+    "alamatPengirim" : "Prima Harapan Regency Blok A No.5",
+    "namaPenerima" : "Abdul Fatah",
+    "noTelpPenerima" : "081332123453",
+    "alamatPenerima" : "Bumi Harapan Blok B No.5",
+    "jenisBarang" : "Makanan",
+    "beratBarang" : "5kg-10kg",
+    "status" : "waiting"
+}
+
+###
+PATCH http://localhost:3000/beranda/gosend/629676f7638c8102966dd216
+Content-Type: application/json
+
+{
+    "namaPengirim" : "Andi Saputra",
+    "noTelpPengirim" : "081364739192",
+    "alamatPengirim" : "Prima Harapan Regency Blok A No.5",
+    "namaPenerima" : "Abdul Fatah",
+    "noTelpPenerima" : "081332123453",
+    "alamatPenerima" : "Bumi Harapan Blok B No.5",
+    "jenisBarang" : "Makanan",
+    "beratBarang" : "5kg-10kg"
+    
+}
+
+###
+GET http://localhost:3000/beranda/order
+
+
+###
+POST http://localhost:3000/beranda/order
+Content-Type: application/json
+
+{
+    "layanan": "Gosend",
+    "dari": "Banyuwangi",
+    "menuju": "Jakarta",
+    "driver": "Supono",
+    "biaya": "Rp15.000",
+    "tanggal": "01-03-2022",
+    "deskripsi": "Yyy"
+}
+
+###
+POST http://localhost:3000/beranda/riwayatOrder
+Content-Type: application/json
+
+{
+    "layanan": "Gosend",
+    "dari": "Banyuwangi",
+    "menuju": "Jakarta",
+    "driver": "Supono",
+    "biaya": "Rp15.000",
+    "tanggal": "01-03-2022",
+    "deskripsi": "Yyy"
+}
+###
+GET http://localhost:3000/beranda/riwayatOrder
+
+###
+GET http://localhost:3000/beranda/riwayatOrder/
