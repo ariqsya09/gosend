@@ -1,40 +1,28 @@
 
-const form = document.forms.myform
-var namaPengirim = document.getElementById("namaPengirim").value
-var noTelpPengirim = document.getElementById("noTelpPengirim").value
-var alamatPengirim = document.getElementById("alamatPengirim").value
-var namaPenerima = document.getElementById("namaPenerima").value
-var noTelpPenerima = document.getElementById("noTelpPenerima").value
-var alamatPenerima = document.getElementById("alamatPenerima").value
-var jenisBarang = document.getElementById("jenisBarang").value
-var beratBarang = document.getElementById("beratBarang").value
-const sbmtBtn = document.getElementById("sbmtBtn")
-form.addEventListener("submit",(e) => {
+const form = document.getElementById('myform')
+form.addEventListener("submit", (e) => {
     e.preventDefault()
-    console.log('tes')
-    // const formData = new FormData(form)
-    // const username = formData.get('username')
-    // const password = formData.get('password')
+    const formData = new FormData(form)
+    var meggedObj = {}; // constructing new obj.
+
+    // add the form key/value pairs
+    for (var [key, val] of formData.entries()) {
+        meggedObj[key] = val;
+    }
 
     fetch('http://localhost:3000/gosend', {
         method: "POST",
         // credentials: "include", // Menggunakan key saat melakukan POST
         headers: {
-            'Content-Type': 'application/json' 
+            'Content-Type': 'application/json'
         },
-        body:JSON.stringify({
-            namaPengirim:namaPengirim,
-            noTelpPengirim:noTelpPengirim,
-            alamatPengirim:alamatPengirim,
-            namaPenerima:namaPenerima,
-            noTelpPenerima:noTelpPenerima,
-            alamatPenerima:alamatPenerima,
-            jenisBarang:jenisBarang,
-            beratBarang:beratBarang
-        })
+        body: JSON.stringify(meggedObj)
     }).then(
         response => {
-            console.log(response.json()) // Respon akan ditampilkan dalam bentuk JSON
+            return response.json() // Respon akan ditampilkan dalam bentuk JSON
         }
     )
+    .then(data => {
+        console.log(data)
+    })
 })
